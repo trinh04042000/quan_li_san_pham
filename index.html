@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <h2>Các sản phẩm</h2>
+ <p id="list"><br></p>
+<button type="button" onclick="add(items)">Thêm</button>
+<button type="button" onclick="edit(items)">Sửa</button>
+<button type="button" onclick="xoa(items)">Xoá</button>
+<script>
+    var items = ['Đường', 'Kẹo', 'Nước', 'Hoa', 'Sữa'];
+    function display(items) {
+        var s="";
+        for (var i=0;i<items.length;i++){
+            s=s+(i+1)+". "+items[i]+"<br>";
+        }
+        return s;
+    }
+    function add(items) {
+        var newItems = prompt("Nhập mặt hàng muốn thêm: ");
+        items.push(newItems);
+        document.getElementById("list").innerHTML = display(items);
+    }
+    function edit(items) {
+        var index = prompt("Nhập số thứ tự muốn sửa: ");
+        var newItems = prompt("Nhập tên mặt hàng thay thế: ");
+        items[index-1] = newItems;
+        document.getElementById("list").innerHTML = display(items);
+    }
+    function xoa(items) {
+        var index = prompt("Nhập số thứ tự muốn xóa: ");
+        items.splice(index-1,1);
+        document.getElementById("list").innerHTML = display(items);
+    }
+    document.getElementById("list").innerHTML = display(items);
+
+</script>
+</body>
+</html>
